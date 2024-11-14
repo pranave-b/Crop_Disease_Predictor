@@ -1,0 +1,19 @@
+[build]
+  # Set the build command for frontend
+  command = "npm run build"
+  publish = "frontend/build"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
+[functions]
+  directory = "backend/api"  # This specifies where your serverless functions are located
+  node_bundler = "esbuild"
+
+[[build.environment]]
+  NODE_ENV = "production"
+
+[[build.processing]]
+  context = "production"
+  command = "npm run build"
+  publish = "frontend/build"
